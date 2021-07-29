@@ -114,7 +114,11 @@ const getAuctionHouseData = async (token, tokenType) => {
     if (ul.lastElementChild !== null){
         ul.removeChild(ul.lastElementChild);
     }
-    
+
+    let selectedRealm = document.getElementById('realms').value;
+    // let selectedRealm = realms.o;
+
+    //console.log(realms);
     try {
         // const response = await fetch('https://eu.battle.net/oauth/token', {
         //     method: 'POST',
@@ -124,7 +128,7 @@ const getAuctionHouseData = async (token, tokenType) => {
         //     }
         // });
         // const data = await response.json();
-        const auctionsData = await fetch(`https://eu.api.blizzard.com/data/wow/connected-realm/3682/auctions?namespace=dynamic-eu`, {
+        const auctionsData = await fetch(`https://eu.api.blizzard.com/data/wow/connected-realm/${selectedRealm}/auctions?namespace=dynamic-eu`, {
             method: 'GET',
             headers: {
                 'Authorization': tokenType + ' ' + token,
